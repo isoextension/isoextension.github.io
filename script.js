@@ -30,23 +30,26 @@ function createPopout(content, options = {}) {
   
   // Create popout container
   const container = document.createElement('div');
-  container.style.cssText = `
-    background: var(--bg-color, #fff);
-    color: var(--text-color, #000);
-    border-radius: 12px;
-    padding: 20px;
-    width: ${config.width};
-    height: ${config.height};
-    position: relative;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow: auto;
-    
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform ${config.animationDuration}ms ease, opacity ${config.animationDuration}ms ease;
-  `;
+container.style.cssText = `
+  background: rgba(255, 255, 255, 0.2); /* semi-transparent */
+  color: var(--text-color, #000);
+  border-radius: 12px;
+  padding: 20px;
+  width: ${config.width};
+  height: ${config.height};
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18); /* frosty border */
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform ${config.animationDuration}ms ease, opacity ${config.animationDuration}ms ease;
+`;
   
   // Add close button if enabled
   if (config.showCloseButton) {
