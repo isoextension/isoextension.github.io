@@ -22,3 +22,38 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+// Set current year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Elements
+const toggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+// Auto-detect system preference if no saved theme
+if (!localStorage.getItem('theme')) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark');
+        toggle.checked = true;
+    } else {
+        root.classList.remove('dark');
+        toggle.checked = false;
+    }
+} else {
+    // Apply saved preference
+    const theme = localStorage.getItem('theme');
+    root.classList.toggle('dark', theme === 'dark');
+    toggle.checked = theme === 'dark';
+}
+
+// Toggle theme on switch change
+toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+        root.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        root.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+    }
+});
+
