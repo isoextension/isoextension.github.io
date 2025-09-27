@@ -47,7 +47,7 @@ container.style.cssText = `
   overflow: auto;
   
   transform: scale(0.8);
-  opacity: 0;
+  opacity: 0.5;
   transition: transform ${config.animationDuration}ms ease, opacity ${config.animationDuration}ms ease;
 `;
   
