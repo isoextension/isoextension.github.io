@@ -15,6 +15,36 @@
 
   background-color: var(--bg-color);
   color: var(--text-color);
+    font-family: var(--font-family);
+transition: background-color var(--transition-speed),
+color var(--transition-speed);
+}
+
+/* NORD LIGHT */
+.nord-light {
+  --bg-color: #eceff4;        /* Nord Snow Storm 3 */
+  --text-color: #2e3440;      /* Nord Polar Night 0 */
+  --primary-color: #5e81ac;   /* Nord Frost 3 - blue */
+  --secondary-color: #81a1c1; /* Nord Frost 2 - lighter blue */
+  --selection-bg: #d8dee9;    /* Nord Snow Storm 2 */
+  --selection-text: #2e3440;  /* Nord Polar Night 0 */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed),
+              color var(--transition-speed);
+}
+
+/* NORD DARK */
+.nord-dark {
+  --bg-color: #2e3440;        /* Nord Polar Night 0 */
+  --text-color: #d8dee9;      /* Nord Snow Storm 2 */
+  --primary-color: #88c0d0;   /* Nord Frost 1 - cyan */
+  --secondary-color: #81a1c1; /* Nord Frost 2 - blue */
+  --selection-bg: #434c5e;    /* Nord Polar Night 2 */
+  --selection-text: #eceff4;  /* Nord Snow Storm 3 */
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--font-family);
   transition: background-color var(--transition-speed),
               color var(--transition-speed);
@@ -33,7 +63,7 @@
   color: var(--text-color);
   font-family: var(--font-family);
   transition: background-color var(--transition-speed),
-              color var(--transition-speed);
+    color var(--transition-speed);
 }
 
 /* Links */
