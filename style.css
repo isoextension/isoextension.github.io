@@ -52,6 +52,11 @@ p, div, h1, h2, h3, h4, h5, h6, li {
   outline: none;
 }
 
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 p:focus, div:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, li:focus {
   outline: 2px dotted var(--primary-color);
   outline-offset: 2px;
