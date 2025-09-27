@@ -1,4 +1,3 @@
-// Attach event listener to all anchor tags
 function createPopout(content, options = {}) {
   // Default options
   const defaults = {
@@ -6,7 +5,8 @@ function createPopout(content, options = {}) {
     height: '80%',
     showCloseButton: true,
     backdrop: true,
-    backdropBlur: true
+    backdropBlur: true,
+    animationDuration: 300 // in ms
   };
   
   const config = { ...defaults, ...options };
@@ -23,8 +23,9 @@ function createPopout(content, options = {}) {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
     ${config.backdropBlur ? 'backdrop-filter: blur(10px);' : ''}
+    transition: background ${config.animationDuration}ms ease;
   `;
   
   // Create popout container
@@ -41,6 +42,10 @@ function createPopout(content, options = {}) {
     max-width: 90vw;
     max-height: 90vh;
     overflow: auto;
+    
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform ${config.animationDuration}ms ease, opacity ${config.animationDuration}ms ease;
   `;
   
   // Add close button if enabled
@@ -68,9 +73,26 @@ function createPopout(content, options = {}) {
     container.appendChild(content);
   }
   
-  // Close function
+  // Append first (hidden)
+  document.body.appendChild(backdrop);
+  backdrop.appendChild(container);
+  
+  // Animate in
+  requestAnimationFrame(() => {
+    backdrop.style.background = 'rgba(0, 0, 0, 0.5)';
+    container.style.transform = 'scale(1)';
+    container.style.opacity = '1';
+  });
+  
+  // Close function with animation
   function closePopout() {
-    document.body.removeChild(backdrop);
+    container.style.transform = 'scale(0.8)';
+    container.style.opacity = '0';
+    backdrop.style.background = 'rgba(0, 0, 0, 0)';
+    
+    setTimeout(() => {
+      if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
+    }, config.animationDuration);
   }
   
   // Close on backdrop click
@@ -79,9 +101,6 @@ function createPopout(content, options = {}) {
       if (e.target === backdrop) closePopout();
     };
   }
-  
-  backdrop.appendChild(container);
-  document.body.appendChild(backdrop);
   
   return closePopout; // Return close function for external use
 }

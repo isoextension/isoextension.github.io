@@ -1,6 +1,54 @@
+/* Customization
+ * Source code at line 45.
+ * GLOBAL
+*/
 :root {
-  /* Common colors for both themes */
-  --font-family: 'Noto Sans', 'Fira Sans', 'Roboto', 'Arial', 'Segoe UI', sans-serif;
+  /* --sans-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
+  /* --mono-font: 'Fira Code', 'Hack', 'Consolas', monospace */
+}
+/* LIGHT THEME */
+.light {
+}
+/* DARK THEME */
+.dark {
+}
+/* GENERAL */
+a {}
+p {}
+div.codeblock {}
+button {}
+a::before {}
+a::after {}
+/* IMPORTS */
+@import "https://www.nerdfonts.com/assets/css/webfont.css"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SOURCE CODE (DO NOT TOUCH!!!) IF YOU DON'T KNOW WHAT YOU'RE DOING!!! */
+
+
+:root {
+  /* Common colors for all themes */
+  --sans-font: 'Noto Sans', 'Fira Sans', 'Roboto', 'Arial', 'Segoe UI', sans-serif;
+  --mono-font: 'Fira Code', 'Roboto Mono', monospace;
   --transition-speed: 0.3s;
 }
 
@@ -15,7 +63,7 @@
 
   background-color: var(--bg-color);
   color: var(--text-color);
-    font-family: var(--font-family);
+    font-family: var(--sans-font);
 transition: background-color var(--transition-speed),
 color var(--transition-speed);
 }
@@ -30,7 +78,7 @@ color var(--transition-speed);
   --selection-text: #2e3440;  /* Nord Polar Night 0 */
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-family);
+  font-family: var(--sans-font);
   transition: background-color var(--transition-speed),
               color var(--transition-speed);
 }
@@ -45,7 +93,7 @@ color var(--transition-speed);
   --selection-text: #eceff4;  /* Nord Snow Storm 3 */
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-family);
+  font-family: var(--sans-font);
   transition: background-color var(--transition-speed),
               color var(--transition-speed);
 }
@@ -61,7 +109,7 @@ color var(--transition-speed);
 
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-family);
+  font-family: var(--sans-font);
   transition: background-color var(--transition-speed),
     color var(--transition-speed);
 }
@@ -71,6 +119,24 @@ a {
   color: var(--primary-color);
   text-decoration: none;
 }
+
+div.codeblock {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--mono-font);
+  border-radius: 10px;
+  border: 2px solid var(--primary-color);
+  padding: 1em;
+  /* overflow-x: auto; no thanks */ /* lets long lines scroll */
+  transition: background-color var(--transition-speed),
+              color var(--transition-speed),
+              border-color var(--transition-speed);
+}
+
+div.codeblock:hover {
+  border-color: var(--secondary-color); /* subtle hover effect */
+}
+
 
 a:focus {
   outline: 2px dashed var(--secondary-color);
@@ -144,7 +210,7 @@ p:focus, div:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, 
 /* Smooth caret support for inputs/textareas */
 input, textarea {
   caret-color: var(--primary-color);
-  font-family: var(--font-family);
+  font-family: var(--sans-font);
 }
 
 /* Optional: add subtle focus for body when caret browsing */
