@@ -108,25 +108,51 @@ container.style.cssText = `
   return closePopout; // Return close function for external use
 }
 
+
+function createExternalLinkPopup(url, siteName) {
+    const popupContent = `
+        <div style="text-align: center; padding: 20px;">
+            <h3>🌐 Leaving Site</h3>
+            <p>You're about to visit:</p>
+            <p><strong>${siteName}</strong></p>
+            <p><code style="background: rgba(0,0,0,0.1); padding: 5px; border-radius: 3px;">${url}</code></p>
+            <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: center;">
+                <button onclick="window.open('${url}', '_blank')" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    ↗ Open in New Tab
+                </button>
+                <button onclick="window.location.href = '${url}'" style="padding: 10px 20px; background: transparent; border: 1px solid #ccc; border-radius: 5px; cursor: pointer;">
+                    Navigate Directly
+                </button>
+                <button onclick="closePopup()" style="padding: 10px 20px; background: transparent; border: 1px solid #ccc; border-radius: 5px; cursor: pointer;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    `;
+    
+    const closePopup = createPopout(popupContent, {
+        width: '400px',
+        height: 'auto',
+        backdrop: true,
+        showCloseButton: false
+    });
+    
+    // Make closePopup globally available for the buttons
+    window.closePopup = closePopup;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-    var anchors = document.querySelectorAll("a");
+    var anchors = document.querySelectorAll("a:not(.trusted)");
     anchors.forEach(function(anchor) {
         anchor.addEventListener("click", function(event) {
-            // Prevent the default action of the anchor tag (i.e., navigating to the URL)
-            event.preventDefault();
-
-            // Extract the URL from the anchor tag's href attribute
-            var website = anchor.getAttribute("href");
-
-            // Construct the confirmation message
-            var confirmationMessage = "You are about to visit " + website + ". Proceed?";
-
-            // Display confirmation dialog
-            var proceed = confirm(confirmationMessage);
-
-            // If user confirms, redirect to the website
-            if (proceed) {
-                window.location.href = website;
+            const href = anchor.getAttribute("href");
+            
+            // Only intercept external links
+            if (href && (href.startsWith('http') || href.startsWith('//'))) {
+                event.preventDefault();
+                
+                // YOUR FANCY POPUP instead of confirm()
+                createExternalLinkPopup(href, anchor.textContent);
             }
         });
     });
