@@ -3,8 +3,8 @@
  * GLOBAL
 */
 :root {
-  /* --sans-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
-  /* --mono-font: 'Fira Code', 'Hack', 'Consolas', monospace */
+  --sans-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --mono-font: 'Fira Code', 'Hack', 'Consolas', monospace;
 }
 /* LIGHT THEME */
 .light {
@@ -17,10 +17,10 @@ a {}
 p {}
 div.codeblock {}
 button {}
-a::before {}
+a::before { content: " "; }
 a::after {}
 /* IMPORTS */
-@import "https://www.nerdfonts.com/assets/css/webfont.css"
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 
 
@@ -43,7 +43,6 @@ a::after {}
 
 
 /* SOURCE CODE, DO NOT TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING!!! */
-
 
 :root {
   /* Common colors for all themes */
