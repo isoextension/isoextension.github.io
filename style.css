@@ -4,7 +4,7 @@
 */
 :root {
   --sans-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --mono-font: 'Fira Code', 'Hack', 'Consolas', monospace;
+  --mono-font: 'nf-fira-mono', 'Fira Mono', 'Hack', 'Consolas', monospace;
 }
 /* LIGHT THEME */
 .light {
@@ -17,7 +17,7 @@ a {}
 p {}
 div.codeblock {}
 button {}
-a::before { content: " "; }
+a::before { content: "<i class=\"nf nf-fa-link_external></i>"; }
 a::after {}
 /* IMPORTS */
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
