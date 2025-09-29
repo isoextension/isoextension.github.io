@@ -1,0 +1,297 @@
+$sans-font: 'nf-aurulent', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !default;
+$mono-font: 'nf-fira-mono', 'Fira Mono', 'Hack', 'Consolas', monospace !default;
+$transition-speed: 0.3s;
+
+// Light theme variables
+$light-bg: #ffffff;
+$light-text: #111111;
+$light-primary: #0078d7;
+$light-secondary: #005a9e;
+$light-selection-bg: #cce4ff;
+$light-selection-text: #000000;
+
+// Nord Light variables
+$nord-light-bg: #eceff4;
+$nord-light-text: #2e3440;
+$nord-light-primary: #5e81ac;
+$nord-light-secondary: #81a1c1;
+$nord-light-selection-bg: #d8dee9;
+$nord-light-selection-text: #2e3440;
+
+// Nord Dark variables
+$nord-dark-bg: #2e3440;
+$nord-dark-text: #d8dee9;
+$nord-dark-primary: #88c0d0;
+$nord-dark-secondary: #81a1c1;
+$nord-dark-selection-bg: #434c5e;
+$nord-dark-selection-text: #eceff4;
+
+// Dark theme variables
+$dark-bg: #1e1e1e;
+$dark-text: #f5f5f5;
+$dark-primary: #0a84ff;
+$dark-secondary: #3a7efc;
+$dark-selection-bg: #005a9e;
+$dark-selection-text: #ffffff;
+
+@font-face {
+  font-family: nf-fira-mono;
+  src: url(/fonts/nf-fira-mono.woff2) format(woff2);
+}
+
+@font-face {
+  font-family: nf-aurulent;
+  src: url(/fonts/nf-aurulent.woff2) format(woff2);
+}
+
+.light {
+  background-color: $light-bg;
+  color: $light-text;
+  font-family: $sans-font;
+  transition: background-color $transition-speed,
+              color $transition-speed;
+}
+
+.nord-light {
+  background-color: $nord-light-bg;
+  color: $nord-light-text;
+  font-family: $sans-font;
+  transition: background-color $transition-speed,
+            color $transition-speed;
+}
+
+.nord-dark {
+  background-color: $nord-dark-bg;
+  color: $nord-dark-text;
+  font-family: $sans-font;
+  transition: background-color $transition-speed,
+              color $transition-speed;
+}
+
+.dark {
+  background-color: $dark-bg;
+  color: $dark-text;
+  font-family: $sans-font;
+  transition: background-color $transition-speed,
+              color $transition-speed;
+}
+
+a {
+  color: $light-primary; // will need theme-specific handling
+  text-decoration: none;
+
+  &:focus {
+    outline: 2px dashed $light-secondary;
+    outline-offset: 2px;
+  }
+
+  .dark & {
+    color: $dark-primary;
+    
+    &:focus {
+      outline-color: $dark-secondary;
+    }
+  }
+
+  .nord-light & {
+    color: $nord-light-primary;
+    
+    &:focus {
+      outline-color: $nord-light-secondary;
+    }
+  }
+
+  .nord-dark & {
+    color: $nord-dark-primary;
+    
+    &:focus {
+      outline-color: $nord-dark-secondary;
+    }
+  }
+}
+
+div.codeblock {
+  font-family: $mono-font;
+  border-radius: 10px;
+  border: 2px solid $light-primary;
+  padding: 1em;
+  transition: background-color $transition-speed,
+              color $transition-speed,
+              border-color $transition-speed;
+
+  .light & {
+    background-color: $light-bg;
+    color: $light-text;
+    border-color: $light-primary;
+
+    &:hover {
+      border-color: $light-secondary;
+    }
+  }
+
+  .dark & {
+    background-color: $dark-bg;
+    color: $dark-text;
+    border-color: $dark-primary;
+
+    &:hover {
+      border-color: $dark-secondary;
+    }
+  }
+
+  .nord-light & {
+    background-color: $nord-light-bg;
+    color: $nord-light-text;
+    border-color: $nord-light-primary;
+
+    &:hover {
+      border-color: $nord-light-secondary;
+    }
+  }
+
+  .nord-dark & {
+    background-color: $nord-dark-bg;
+    color: $nord-dark-text;
+    border-color: $nord-dark-primary;
+
+    &:hover {
+      border-color: $nord-dark-secondary;
+    }
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin: 10px 0;
+
+  input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .slider {
+      background-color: #007bff;
+
+      &:before {
+        transform: translateX(26px);
+      }
+    }
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+}
+
+p, div, h1, h2, h3, h4, h5, h6, li {
+  font-family: $sans-font;
+  outline: none;
+
+  &:focus {
+    .light & {
+      outline: 2px dotted $light-primary;
+      outline-offset: 2px;
+    }
+
+    .dark & {
+      outline: 2px dotted $dark-primary;
+      outline-offset: 2px;
+    }
+
+    .nord-light & {
+      outline: 2px dotted $nord-light-primary;
+      outline-offset: 2px;
+    }
+
+    .nord-dark & {
+      outline: 2px dotted $nord-dark-primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.light ::selection {
+  background-color: $light-selection-bg;
+  color: $light-selection-text;
+}
+
+.dark ::selection {
+  background-color: $dark-selection-bg;
+  color: $dark-selection-text;
+}
+
+.nord-light ::selection {
+  background-color: $nord-light-selection-bg;
+  color: $nord-light-selection-text;
+}
+
+.nord-dark ::selection {
+  background-color: $nord-dark-selection-bg;
+  color: $nord-dark-selection-text;
+}
+
+input, textarea {
+  font-family: $sans-font;
+
+  .light & {
+    caret-color: $light-primary;
+  }
+
+  .dark & {
+    caret-color: $dark-primary;
+  }
+
+  .nord-light & {
+    caret-color: $nord-light-primary;
+  }
+
+  .nord-dark & {
+    caret-color: $nord-dark-primary;
+  }
+}
+
+body:focus {
+  .light & {
+    outline: 1px solid $light-primary;
+  }
+
+  .dark & {
+    outline: 1px solid $dark-primary;
+  }
+
+  .nord-light & {
+    outline: 1px solid $nord-light-primary;
+  }
+
+  .nord-dark & {
+    outline: 1px solid $nord-dark-primary;
+  }
+}
