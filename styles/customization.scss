@@ -6,7 +6,6 @@ button {}
 
 a {
   &::before { 
-    content: " "; 
+    content: "↗ "; 
   }
-  &::after {}
 }
